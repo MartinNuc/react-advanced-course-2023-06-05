@@ -5,12 +5,29 @@ import { Joke } from './joke/joke';
 import { AlbumVoting } from './album-voting/AlbumVoting';
 import { UserContextProvider } from './current-user/UserContextProvider';
 import { UserInfoPane } from './current-user/user-info-pane';
+import {RouterProvider, createBrowserRouter} from 'react-router-dom';
+import { Layout } from './Layout';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: 'joke',
+        element: <Joke />
+      },
+      {
+        path: 'voting',
+        element: <AlbumVoting />
+      }
+    ]
+  }
+])
 
 function App() {
   return (<UserContextProvider>
-    <UserInfoPane />
-    <Joke />
-    <AlbumVoting />
+    <RouterProvider router={router} />
   </UserContextProvider>);
 }
 
