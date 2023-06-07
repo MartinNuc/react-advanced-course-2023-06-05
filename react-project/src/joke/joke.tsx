@@ -24,7 +24,7 @@ export function Joke() {
   }
 
   return <div>
-    <p>{joke}</p>
+    <p data-testid="joke">{joke}</p>
 
     <button disabled={isLoading} onClick={fetchJoke}>Load next joke</button>
   </div>
